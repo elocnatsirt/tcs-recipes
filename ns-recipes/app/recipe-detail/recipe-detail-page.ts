@@ -10,7 +10,6 @@ export function navigatingTo(args: NavigatedData): void {
 
     // The navigation event arguments are of type NavigatedData and provide another way to grab the passed context
     const context = args.context;
-    console.dir(context.recipeData);
 
     page.bindingContext = navigationContext;
 }

@@ -32,9 +32,12 @@ export function dropDownSelectedIndexChanged(args: SelectedIndexChangedEventData
 }
 
 // Recipe functions
-export function addRecipe() {
+export function addRecipe(args: EventData) {
     console.log("Adding recipe")
     // TODO: Navigate to "add recipe" page, save recipe in user's local storage
+    const item: Button = <Button>args.object;
+    const page: Page = item.page;
+    page.frame.navigate("~/add-recipe/add-recipe-page");
 }
 
 export function recipeDetail(args: EventData) {
@@ -43,7 +46,7 @@ export function recipeDetail(args: EventData) {
     const page: Page = item.page;
     let recipe = <GridLayout>args.object.get("recipeData");
     const navigationEntry: NavigationEntry = {
-        moduleName: "./recipe-detail/recipe-detail-page",
+        moduleName: "~/recipe-detail/recipe-detail-page",
         context: { recipeData: recipe },
     };
     page.frame.navigate(navigationEntry);

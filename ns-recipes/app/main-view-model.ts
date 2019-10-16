@@ -20,7 +20,7 @@ export class HelloWorldModel extends Observable {
 
         this.dropdownItems = new ObservableArray<any>();
         this.selectedIndex = 0;
-        const items = ["Name (A-Z)", "Name (Z-A)", "Prep Time"];
+        const items = ["Name (A-Z)", "Name (Z-A)"];
         this.dropdownItems.push(items);
 
         getData(this.selectedIndex).then((recipeData) => {

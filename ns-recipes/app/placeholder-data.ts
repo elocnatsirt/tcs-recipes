@@ -32,4 +32,32 @@ const recipes = [{
         "2": "Eat steak"
     },
     "source": "https://www.foodnetwork.com/recipes/alton-brown/pan-seared-rib-eye-recipe-2131274"
+},
+{
+    "name": "Crispy Smashed Potatoes",
+    "ingredients": {
+        "meat": "8 potatoes",
+        "spices": "kosher salt and black pepper for seasoning",
+        "oil": "oil for coating"
+    },
+    "image": "~/images/potatoes.png",
+    "steps": {
+        "1": "Make potatoes",
+        "2": "Eat potatoes"
+    },
+    "source": "https://www.recipetineats.com/crispy-smashed-potatoes/"
+},
+{
+    "name": "Pan Fried Pork Chops",
+    "ingredients": {
+        "meat": "thick porkchops",
+        "spices": "kosher salt and black pepper for seasoning",
+        "oil": "oil for coating"
+    },
+    "image": "~/images/porkchops.png",
+    "steps": {
+        "1": "Make pork chops",
+        "2": "Eat pork chops"
+    },
+    "source": "https://www.foodnetwork.com/recipes/ree-drummond/pan-fried-pork-chops-recipe-1989074"
 }]

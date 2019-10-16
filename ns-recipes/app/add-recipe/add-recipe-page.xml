@@ -3,11 +3,11 @@
     navigatingTo="navigatingTo"
     class="page">
 
-    <ActionBar title="{{ recipeData.name }}" class="action-bar">
+    <ActionBar title="Add Recipe" class="action-bar">
         <StackLayout orientation="horizontal"
             ios:horizontalAlignment="center"
             android:horizontalAlignment="center">
-            <Label text="{{ recipeData.name }}" class="action-bar"></Label>
+            <Label text="Add Recipe" class="action-bar"></Label>
         </StackLayout>
         <NavigationButton text="Go Back" android.systemIcon="ic_menu_back" tap="goBack"/>
         <ActionItem icon="res://navigation/back" 
@@ -18,10 +18,7 @@
     </ActionBar>
 
     <StackLayout>
-        <Image src="{{ recipeData.image }}"/>
-        <Label text="{{ recipeData.source }}"/>
-        <Label text="{{ recipeData.ingredients }}"/>
-        <Label text="{{ recipeData.steps }}"/>
+        <Label text="Add a recipe guy!"/>
     </StackLayout>
 
 </Page>
