@@ -4,6 +4,7 @@ import { Button } from "tns-core-modules/ui/button";
 import { HelloWorldModel } from "./main-view-model";
 import { SelectedIndexChangedEventData } from "nativescript-drop-down";
 import { GridLayout } from "tns-core-modules/ui/layouts/grid-layout"
+import { NavigationEntry } from "tns-core-modules/ui/frame/frame";
 
 export function navigatingTo(args: EventData) {
     const page = <Page>args.object;
@@ -41,5 +42,11 @@ export function recipeDetail(args: EventData) {
     // TODO: Navigate to populated recipe-detail page
     const item: GridLayout = <GridLayout>args.object;
     const page: Page = item.page;
-    page.frame.navigate("./recipe-detail/recipe-detail-page");
+    let recipe = <GridLayout>args.object.get("recipeName");
+    const navigationEntry: NavigationEntry = {
+        moduleName: "./recipe-detail/recipe-detail-page",
+        context: { recipeName: recipe },
+    }
+    // page.frame.navigate("./recipe-detail/recipe-detail-page");
+    page.frame.navigate(navigationEntry);
 }
