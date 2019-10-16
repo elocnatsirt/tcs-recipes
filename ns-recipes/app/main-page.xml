@@ -4,8 +4,7 @@
     class="page"
     xmlns:dd="nativescript-drop-down">
     <Page.actionBar>
-        <ActionBar title="TC's Recipes" icon="" class="action-bar">
-        </ActionBar>
+        <ActionBar title="TC's Recipes" icon="" class="action-bar"/>
     </Page.actionBar>
     <GridLayout columns="*,auto,auto" rows="auto,5*" >
         <!-- Add &#xf2e7; back to button -->
@@ -18,7 +17,7 @@
 
         <ListView row="1" colSpan="3" class="list-group" items="{{ dataItems }}" separatorColor="transparent">
             <ListView.itemTemplate>
-                <GridLayout recipeName="{{ name }}" tap="recipeDetail" route="recipe-detail/recipe-detail" rows="*,auto,auto" columns="5*, *" class="list-group-item">
+                <GridLayout recipeData="{{ $value }}" tap="recipeDetail" route="recipe-detail/recipe-detail" rows="*,auto,auto" columns="5*, *" class="list-group-item">
                     <Label row="0" col="0" text="{{ name }}" class="h2" />
                     <Image horizontalAlignment="center" row="0" rowSpan="2" col="2" src="{{ image }}" />
                 </GridLayout>

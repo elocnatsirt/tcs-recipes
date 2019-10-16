@@ -39,14 +39,12 @@ export function addRecipe() {
 
 export function recipeDetail(args: EventData) {
     console.log("Recipe detail")
-    // TODO: Navigate to populated recipe-detail page
     const item: GridLayout = <GridLayout>args.object;
     const page: Page = item.page;
-    let recipe = <GridLayout>args.object.get("recipeName");
+    let recipe = <GridLayout>args.object.get("recipeData");
     const navigationEntry: NavigationEntry = {
         moduleName: "./recipe-detail/recipe-detail-page",
-        context: { recipeName: recipe },
-    }
-    // page.frame.navigate("./recipe-detail/recipe-detail-page");
+        context: { recipeData: recipe },
+    };
     page.frame.navigate(navigationEntry);
 }
