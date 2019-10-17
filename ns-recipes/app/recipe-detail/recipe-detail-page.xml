@@ -17,11 +17,32 @@
         </ActionItem>
     </ActionBar>
 
-    <StackLayout>
-        <Image src="{{ recipeData.image }}"/>
-        <Label text="{{ recipeData.source }}"/>
-        <Label text="{{ recipeData.ingredients }}"/>
-        <Label text="{{ recipeData.steps }}"/>
-    </StackLayout>
+    <ScrollView>
+        <StackLayout>
+            <Label/>
+            <Image src="{{ recipeData.image }}" height="800px"/>
+            <Label/>
+            <Label horizontalAlignment="center" text="Source" class="h2"/>
+            <Label width="90%" onTap="gotoSource" horizontalAlignment="center" text="{{ recipeData.source }}" textWrap="true"/>
+            <Label/>
+            <Label horizontalAlignment="center" text="Ingredients" class="h2"/>
+            <ListView width="90%" items="{{ recipeData.ingredients }}" height="100">
+                <StackLayout>
+                    <ListView.itemTemplate>
+                        <Label text="{{ item }}" />
+                    </ListView.itemTemplate>
+                </StackLayout>
+            </ListView>
+            <Label/>
+            <Label horizontalAlignment="center" text="Steps" class="h2"/>
+            <ListView width="90%" items="{{ recipeData.steps }}" height="100">
+                <StackLayout>
+                    <ListView.itemTemplate>
+                        <Label text="{{ item }}" />
+                    </ListView.itemTemplate>
+                </StackLayout>
+            </ListView>
+        </StackLayout>
+    </ScrollView>
 
 </Page>

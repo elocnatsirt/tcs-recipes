@@ -1,7 +1,9 @@
 import { EventData } from "tns-core-modules/data/observable";
 import { Page, NavigatedData } from "tns-core-modules/ui/page";
 import { Button } from "tns-core-modules/ui/button";
-import { RecipeDetailModel } from "./recipe-detail-view-model";
+import { Label } from "tns-core-modules/ui/label";
+import * as utils from "tns-core-modules/utils/utils";
+import { ObservableArray } from "tns-core-modules/data/observable-array/observable-array";
 
 // Event handler for Page "navigatedTo" event attached in details-page.xml e.g.
 export function navigatingTo(args: NavigatedData): void {
@@ -14,13 +16,15 @@ export function navigatingTo(args: NavigatedData): void {
     page.bindingContext = navigationContext;
 }
 
-// export function navigatingTo(args: EventData) {
-//     const page = <Page>args.object;
-//     page.bindingContext = new RecipeDetailModel();
-// }
-
 export function goBack(args: EventData) {
     const button: Button = <Button>args.object;
     const page: Page = button.page;
     page.frame.goBack();
+}
+
+export function gotoSource(args: EventData) {
+    const label: Label = <Label>args.object;
+    const page: Page = label.page;
+    const url = <Label>args.object.get("text");
+    utils.openUrl(url.toString())
 }
