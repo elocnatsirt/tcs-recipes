@@ -18,15 +18,15 @@
     </ActionBar>
 
     <ScrollView>
-        <StackLayout>
+        <StackLayout width="90%">
             <Label/>
             <Image src="{{ recipeData.image }}" height="800px"/>
             <Label/>
-            <Label horizontalAlignment="center" text="Source" class="h2"/>
-            <Label width="90%" onTap="gotoSource" horizontalAlignment="center" text="{{ recipeData.source }}" textWrap="true"/>
+            <Label horizontalAlignment="left" text="Source" class="h2"/>
+            <Label onTap="gotoSource" horizontalAlignment="center" text="{{ recipeData.source }}" textWrap="true"/>
             <Label/>
-            <Label horizontalAlignment="center" text="Ingredients" class="h2"/>
-            <ListView width="90%" items="{{ recipeData.ingredients }}" height="100">
+            <Label horizontalAlignment="left" text="Ingredients" class="h2"/>
+            <ListView items="{{ recipeData.ingredients }}" height="100">
                 <StackLayout>
                     <ListView.itemTemplate>
                         <Label text="{{ item }}" />
@@ -34,8 +34,8 @@
                 </StackLayout>
             </ListView>
             <Label/>
-            <Label horizontalAlignment="center" text="Steps" class="h2"/>
-            <ListView width="90%" items="{{ recipeData.steps }}" height="100">
+            <Label horizontalAlignment="left" text="Steps" class="h2"/>
+            <ListView items="{{ recipeData.steps }}" height="100">
                 <StackLayout>
                     <ListView.itemTemplate>
                         <Label text="{{ item }}" />

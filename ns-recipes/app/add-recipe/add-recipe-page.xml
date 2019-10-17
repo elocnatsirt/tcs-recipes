@@ -1,5 +1,6 @@
 <Page
     xmlns="http://schemas.nativescript.org/tns.xsd"
+    xmlns:df="nativescript-ui-dataform"
     navigatingTo="navigatingTo"
     class="page">
 
@@ -15,10 +16,14 @@
             tap="goBack"
             ios.position="left">
         </ActionItem>
+        <ActionItem tap="addRecipe"
+            android.systemIcon="ic_menu_add"
+            android.position="right"
+            ios.position="right"/>
     </ActionBar>
 
     <StackLayout>
-        <Label text="Add a recipe guy!"/>
+        <df:RadDataForm id="myDataForm" source="{{ newRecipe }}" />
     </StackLayout>
 
 </Page>
