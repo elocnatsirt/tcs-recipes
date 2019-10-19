@@ -16,7 +16,7 @@
             tap="goBack"
             ios.position="left">
         </ActionItem>
-        <ActionItem tap="addRecipe"
+        <ActionItem newRecipe="{{ newRecipe }}" tap="addRecipe"
             android.systemIcon="ic_menu_add"
             android.position="right"
             ios.position="right"/>

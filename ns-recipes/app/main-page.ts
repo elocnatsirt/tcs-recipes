@@ -14,7 +14,6 @@ export function navigatingTo(args: EventData) {
 export function goBack(args: EventData) {
     const button: Button = <Button>args.object;
     const page: Page = button.page;
-    console.log("done")
     page.frame.goBack();
 }
 
@@ -33,15 +32,14 @@ export function dropDownSelectedIndexChanged(args: SelectedIndexChangedEventData
 
 // Recipe functions
 export function addRecipe(args: EventData) {
-    console.log("Adding recipe")
-    // TODO: Navigate to "add recipe" page, save recipe in user's local storage
+    // console.log("Adding recipe")
     const item: Button = <Button>args.object;
     const page: Page = item.page;
     page.frame.navigate("~/add-recipe/add-recipe-page");
 }
 
 export function recipeDetail(args: EventData) {
-    console.log("Recipe detail")
+    // console.log("Recipe detail")
     const item: GridLayout = <GridLayout>args.object;
     const page: Page = item.page;
     let recipe = <GridLayout>args.object.get("recipeData");
