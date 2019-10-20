@@ -3,9 +3,6 @@
     navigatingTo="navigatingTo"
     class="page"
     xmlns:dd="nativescript-drop-down">
-    <!-- <Page.actionBar>
-        <ActionBar title="TC's Recipes" class="action-bar"/>
-    </Page.actionBar> -->
     <ActionBar class="action-bar">
         <StackLayout orientation="horizontal"
             ios:horizontalAlignment="center"

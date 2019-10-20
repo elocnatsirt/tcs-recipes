@@ -27,11 +27,16 @@ export class HelloWorldModel extends Observable {
         this.dropdownItems.push(items);
 
         // Populate recipes stored locally
-        let storedRecipes = appSettings.getAllKeys();
-        storedRecipes.forEach(element => {
-            // console.dir(JSON.parse(appSettings.getString(element)))
-            this.dataItems.push(JSON.parse(appSettings.getString(element)))
-        });
+        let storedRecipes = [];
+        try {
+            storedRecipes = appSettings.getAllKeys();
+            storedRecipes.forEach(element => {
+                // console.dir(JSON.parse(appSettings.getString(element)))
+                this.dataItems.push(JSON.parse(appSettings.getString(element)))
+            });
+        } catch (e) {
+            console.log("No stored recipes")
+        }
 
         // Populate recipes from placeholder data
         getData(this.selectedIndex).then((recipeData) => {
