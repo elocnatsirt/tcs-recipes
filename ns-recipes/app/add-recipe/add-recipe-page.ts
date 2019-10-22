@@ -3,6 +3,7 @@ import { Page } from "tns-core-modules/ui/page";
 import { Button } from "tns-core-modules/ui/button";
 import { AddRecipeViewModel } from "./add-recipe-view-model";
 import * as appSettings from "tns-core-modules/application-settings";
+import { NavigationEntry } from "tns-core-modules/ui/frame/frame";
 
 export function navigatingTo(args: EventData) {
     const page = <Page>args.object;
@@ -24,13 +25,18 @@ export function addRecipe(args: EventData) {
     // console.log(newRecipe.name)
     if (saveRecipe(newRecipe)) {
         page.frame.navigate("~/main-page");
+        // const navigationEntry: NavigationEntry = {
+        //     moduleName: "~/main-page",
+        //     context: { recipeData: newRecipe },
+        // };
+        // page.frame.navigate(navigationEntry);
     } else {
         alert("Recipe with that name already exists");
     }
 }
 
 export function saveRecipe(recipe: { name: string; }) {
-    if (appSettings.hasKey(recipe.name) == false) {
+    if (!appSettings.hasKey(recipe.name)) {
         // console.log("Doesn't exist, saving");
         appSettings.setString(recipe.name, JSON.stringify(recipe));
         return true;

@@ -19,7 +19,7 @@
                     selectedIndexChanged="dropDownSelectedIndexChanged"
                     row="0" col="2" itemsPadding="8" verticalAlignment="center" itemsTextAlignment="center" horizontalAlignment="right" />
 
-        <ListView row="1" colSpan="3" class="list-group" items="{{ dataItems }}" separatorColor="transparent">
+        <ListView id="recipeList" row="1" colSpan="3" class="list-group" items="{{ dataItems }}" separatorColor="transparent">
             <ListView.itemTemplate>
                 <GridLayout recipeData="{{ $value }}" tap="recipeDetail" route="recipe-detail/recipe-detail" rows="*,auto,auto" columns="5*, *" class="list-group-item">
                     <Label row="0" col="0" text="{{ name }}" class="h2" />

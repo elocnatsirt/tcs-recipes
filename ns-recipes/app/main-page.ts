@@ -1,33 +1,33 @@
 import { EventData } from "tns-core-modules/data/observable";
 import { Page } from "tns-core-modules/ui/page";
 import { Button } from "tns-core-modules/ui/button";
-import { HelloWorldModel } from "./main-view-model";
-import { SelectedIndexChangedEventData } from "nativescript-drop-down";
+import { MainPageModel } from "./main-view-model";
+import { SelectedIndexChangedEventData, DropDown, selectedIndexProperty } from "nativescript-drop-down";
 import { GridLayout } from "tns-core-modules/ui/layouts/grid-layout"
 import { NavigationEntry } from "tns-core-modules/ui/frame/frame";
+import * as appSettings from "tns-core-modules/application-settings";
+
+const mainPageModel = new MainPageModel();
 
 export function navigatingTo(args: EventData) {
     const page = <Page>args.object;
-    page.bindingContext = new HelloWorldModel();
-}
-
-export function goBack(args: EventData) {
-    const button: Button = <Button>args.object;
-    const page: Page = button.page;
-    page.frame.goBack();
+    const recipeList = page.getViewById("recipeList");
+    page.bindingContext = mainPageModel;
+    mainPageModel.recipeList = recipeList;
 }
 
 // Dropdown Functions
-export function dropDownOpened(args: EventData) {
-    console.log("Drop Down opened");
-}
- 
-export function dropDownClosed(args: EventData) {
-    console.log("Drop Down closed");
-}
+// export function dropDownOpened(args: EventData) {
+//     console.log("Drop Down opened");
+// }
+
+// export function dropDownClosed(args: EventData) {
+//     console.log("Drop Down closed");
+// }
 
 export function dropDownSelectedIndexChanged(args: SelectedIndexChangedEventData) {
-    console.log(`Drop Down selected index changed from ${args.oldIndex} to ${args.newIndex}`);
+    // console.log(`Drop Down selected index changed from ${args.oldIndex} to ${args.newIndex}`);
+    mainPageModel.updateSort(args.newIndex);
 }
 
 // Recipe functions

@@ -5,10 +5,11 @@ import * as appSettings from "tns-core-modules/application-settings";
 
 import { getData } from "./placeholder-data";
 
-export class HelloWorldModel extends Observable {
+export class MainPageModel extends Observable {
     // Dropdown populating
     @ObservableProperty() dropdownItems: ObservableArray<any>;
-    @ObservableProperty() selectedIndex: 0;
+    @ObservableProperty() selectedIndex: number;
+    @ObservableProperty() recipeList;
 
     // Recipe templating
     @ObservableProperty() isBusy: boolean = true;
@@ -26,22 +27,46 @@ export class HelloWorldModel extends Observable {
         const items = ["Name (A-Z)", "Name (Z-A)"];
         this.dropdownItems.push(items);
 
-        // Populate recipes stored locally
-        let storedRecipes = [];
-        try {
-            storedRecipes = appSettings.getAllKeys();
-            storedRecipes.forEach(element => {
-                // console.dir(JSON.parse(appSettings.getString(element)))
-                this.dataItems.push(JSON.parse(appSettings.getString(element)))
-            });
-        } catch (e) {
-            console.log("No stored recipes")
-        }
+        // // Populate recipes stored locally
+        // try {
+        //     let storedRecipes = appSettings.getAllKeys();
+        //     storedRecipes.forEach(element => {
+        //         // console.dir(JSON.parse(appSettings.getString(element)))
+        //         this.dataItems.push(JSON.parse(appSettings.getString(element)))
+        //     });
+        // } catch (e) {
+        //     console.log("No stored recipes");
+        //     console.log(e);
+        // }
 
         // Populate recipes from placeholder data
-        getData(this.selectedIndex).then((recipeData) => {
+        getData().then((recipeData) => {
             this.dataItems.push(recipeData);
             this.isBusy = false;
+            if (this.selectedIndex == 0) {
+                this.dataItems.sort(function (a, b) {
+                    return a.name.localeCompare(b.name);
+                });
+            } else if (this.selectedIndex == 1) {
+                this.dataItems.sort(function (a, b) {
+                    return b.name.localeCompare(a.name);
+                });
+            }
         });
+    }
+
+    public updateSort(index: number) {
+        this.selectedIndex = index;
+        if (this.selectedIndex == 0) {
+            this.dataItems.sort(function (a, b) {
+                return a.name.localeCompare(b.name);
+            });
+        } else if (this.selectedIndex == 1) {
+            this.dataItems.sort(function (a, b) {
+                return b.name.localeCompare(a.name);
+            });
+        }
+        this.recipeList.refresh();
+        console.log("Sorted");
     }
 }

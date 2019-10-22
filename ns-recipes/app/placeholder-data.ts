@@ -1,8 +1,7 @@
-export function getData(index) {
-    return new Promise((resolve, reject) => {
-        resolve(recipes);
-    });
-}
+import * as appSettings from "tns-core-modules/application-settings";
+
+import { getNativeApplication } from "tns-core-modules/application";
+import { isAndroid, isIOS } from "tns-core-modules/platform";
 
 const recipes = [{
     "name": "Easy Meatballs",
@@ -61,3 +60,46 @@ const recipes = [{
     ],
     "source": "https://www.foodnetwork.com/recipes/ree-drummond/pan-fried-pork-chops-recipe-1989074"
 }]
+
+export function getData() {
+    // This should be done by getAllKeys() but it resolves as undefined when app is starting.
+    if (isAndroid) {
+        const sharedPreferences = getNativeApplication().getApplicationContext().getSharedPreferences("prefs.db", 0);
+        const mappedPreferences = sharedPreferences.getAll();
+        const iterator = mappedPreferences.keySet().iterator();
+
+        while (iterator.hasNext()) {
+            const key = iterator.next();
+            console.log(key); // myString, myNumbver, isReal
+            const value = mappedPreferences.get(key);
+            console.log(value); // "John Doe", 42, true
+            recipes.push(JSON.parse(appSettings.getString(key)));
+        }
+    } else if (isIOS) {
+        // tslint:disable-next-line
+        // Note: If using TypeScript you will need tns-platform-declarations plugin to access the native APIs like NSUserDefaults
+        const userDefaults = NSUserDefaults.standardUserDefaults;
+        const dictionaryUserDefaults = userDefaults.dictionaryRepresentation();
+
+        const allKeys = dictionaryUserDefaults.allKeys;
+        console.log(allKeys);
+        const allValues = dictionaryUserDefaults.allValues;
+        console.log(allValues);
+    }
+    
+    // Populate recipes stored locally
+    // try {
+    //     let storedRecipes = appSettings.getAllKeys();
+    //     console.dir(storedRecipes)
+    //     storedRecipes.forEach(element => {
+    //         // console.dir(JSON.parse(appSettings.getString(element)))
+    //         recipes.push(JSON.parse(appSettings.getString(element)))
+    //     });
+    // } catch (e) {
+    //     console.log("No stored recipes");
+    //     console.log(e);
+    // }
+    return new Promise((resolve, reject) => {
+        resolve(recipes);
+    });
+}
