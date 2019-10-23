@@ -7,7 +7,7 @@
         <StackLayout orientation="horizontal"
             ios:horizontalAlignment="center"
             android:horizontalAlignment="center">
-            <Label text="{{ recipeData.name }}" class="action-bar"></Label>
+            <Label text="{{ recipeData.name }}" class="action-bar" textWrap="true"></Label>
         </StackLayout>
         <NavigationButton text="Go Back" android.systemIcon="ic_menu_back" tap="goBack"/>
         <ActionItem icon="res://navigation/back" 
@@ -47,6 +47,7 @@
                     <Label text="{{ $value }}" margin="1" />
                 </Repeater.itemTemplate>
             </Repeater>
+            <Label/>
 
         </StackLayout>
     </ScrollView>

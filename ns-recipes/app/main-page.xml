@@ -11,8 +11,7 @@
         </StackLayout>
     </ActionBar>
     <GridLayout columns="*,auto,auto" rows="auto,5*" >
-        <!-- Add &#xf2e7; back to button -->
-        <Button horizontalAlignment="left" row="0" col="0" text="Add New Recipe" tap="addRecipe" class="add-button" />
+        <Button horizontalAlignment="left" row="0" col="0" text="+ Add New Recipe" tap="addRecipe" class="add-button" />
         <Label horizontalAlignment="right" verticalAlignment="center" text="Sort by:" col="1" row="0" padding="10" fontWeight="bold" fontSize="18" />
         <dd:DropDown items="{{ dropdownItems }}" selectedIndex="{{ selectedIndex }}" 
                     opened="dropDownOpened" closed="dropDownClosed" 
