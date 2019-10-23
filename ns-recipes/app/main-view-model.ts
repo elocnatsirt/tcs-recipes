@@ -43,15 +43,7 @@ export class MainPageModel extends Observable {
         getData().then((recipeData) => {
             this.dataItems.push(recipeData);
             this.isBusy = false;
-            if (this.selectedIndex == 0) {
-                this.dataItems.sort(function (a, b) {
-                    return a.name.localeCompare(b.name);
-                });
-            } else if (this.selectedIndex == 1) {
-                this.dataItems.sort(function (a, b) {
-                    return b.name.localeCompare(a.name);
-                });
-            }
+            this.updateSort(this.selectedIndex);
         });
     }
 
@@ -66,7 +58,7 @@ export class MainPageModel extends Observable {
                 return b.name.localeCompare(a.name);
             });
         }
-        this.recipeList.refresh();
         console.log("Sorted");
+        return this.recipeList.refresh();
     }
 }

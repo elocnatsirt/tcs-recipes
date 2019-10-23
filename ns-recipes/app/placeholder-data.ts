@@ -70,9 +70,9 @@ export function getData() {
 
         while (iterator.hasNext()) {
             const key = iterator.next();
-            console.log(key); // myString, myNumbver, isReal
+            // console.log(key); // myString, myNumbver, isReal
             const value = mappedPreferences.get(key);
-            console.log(value); // "John Doe", 42, true
+            // console.log(value); // "John Doe", 42, true
             recipes.push(JSON.parse(appSettings.getString(key)));
         }
     } else if (isIOS) {

@@ -19,8 +19,8 @@ export class NewRecipe {
     public name: string;
     public image: string;
     public source: URL;
-    public ingredients: string;
-    public steps: string;
+    public ingredients: Array<string>;
+    public steps: Array<string>;
     public notes: string;
     
     constructor(name, image, source, ingredients, steps, notes) {

@@ -24,18 +24,26 @@ export function addRecipe(args: EventData) {
     // console.dir(newRecipe);
     // console.log(newRecipe.name)
     if (saveRecipe(newRecipe)) {
-        page.frame.navigate("~/main-page");
-        // const navigationEntry: NavigationEntry = {
-        //     moduleName: "~/main-page",
-        //     context: { recipeData: newRecipe },
-        // };
-        // page.frame.navigate(navigationEntry);
-    } else {
-        alert("Recipe with that name already exists");
+        // page.frame.navigate("~/main-page");
+        const navigationEntry: NavigationEntry = {
+            moduleName: "~/main-page",
+            context: { newRecipe },
+        };
+        page.frame.navigate(navigationEntry);
     }
 }
 
-export function saveRecipe(recipe: { name: string; }) {
+export function saveRecipe(recipe) {
+    // console.dir(recipe);
+    // console.log(recipe.steps);
+    try {
+        recipe.steps = recipe.steps.split(" ")
+    } catch(e) {
+        console.log(e)
+        recipe.steps = [recipe.steps]
+    }
+    // console.log(recipe.steps);
+    // console.dir(recipe);
     if (!appSettings.hasKey(recipe.name)) {
         // console.log("Doesn't exist, saving");
         appSettings.setString(recipe.name, JSON.stringify(recipe));

@@ -1,5 +1,5 @@
 import { EventData } from "tns-core-modules/data/observable";
-import { Page } from "tns-core-modules/ui/page";
+import { Page, NavigatedData } from "tns-core-modules/ui/page";
 import { Button } from "tns-core-modules/ui/button";
 import { MainPageModel } from "./main-view-model";
 import { SelectedIndexChangedEventData, DropDown, selectedIndexProperty } from "nativescript-drop-down";
@@ -9,11 +9,23 @@ import * as appSettings from "tns-core-modules/application-settings";
 
 const mainPageModel = new MainPageModel();
 
-export function navigatingTo(args: EventData) {
+export function navigatingTo(args: NavigatedData) {
     const page = <Page>args.object;
     const recipeList = page.getViewById("recipeList");
+    const navigationContext = page.navigationContext;
+
+    // The navigation event arguments are of type NavigatedData and provide another way to grab the passed context
+    const context = args.context;
     page.bindingContext = mainPageModel;
     mainPageModel.recipeList = recipeList;
+    try {
+        console.log(context.newRecipe);
+        mainPageModel.dataItems.push(context.newRecipe);
+        context.newRecipe = undefined;
+        mainPageModel.updateSort(0);
+    } catch(e) {
+        console.log(e)
+    }
 }
 
 // Dropdown Functions
