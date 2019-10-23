@@ -51,11 +51,11 @@ export class MainPageModel extends Observable {
         this.selectedIndex = index;
         if (this.selectedIndex == 0) {
             this.dataItems.sort(function (a, b) {
-                return a.name.localeCompare(b.name);
+                return a.name.toUpperCase().localeCompare(b.name.toUpperCase());
             });
         } else if (this.selectedIndex == 1) {
             this.dataItems.sort(function (a, b) {
-                return b.name.localeCompare(a.name);
+                return b.name.toUpperCase().localeCompare(a.name.toUpperCase());
             });
         }
         console.log("Sorted");

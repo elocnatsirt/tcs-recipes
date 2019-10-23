@@ -37,10 +37,13 @@ export function saveRecipe(recipe) {
     // console.dir(recipe);
     // console.log(recipe.steps);
     try {
-        recipe.steps = recipe.steps.split(" ")
+        recipe.steps = recipe.steps.split(".");
+        recipe.ingredients = recipe.ingredients.split(".");
     } catch(e) {
         console.log(e)
-        recipe.steps = [recipe.steps]
+        console.log("String to array")
+        recipe.steps = [recipe.steps];
+        recipe.ingredients = [recipe.ingredients];
     }
     // console.log(recipe.steps);
     // console.dir(recipe);

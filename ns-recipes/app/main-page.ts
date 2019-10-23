@@ -19,10 +19,13 @@ export function navigatingTo(args: NavigatedData) {
     page.bindingContext = mainPageModel;
     mainPageModel.recipeList = recipeList;
     try {
-        console.log(context.newRecipe);
-        mainPageModel.dataItems.push(context.newRecipe);
-        context.newRecipe = undefined;
-        mainPageModel.updateSort(0);
+        // console.log(context.newRecipe);
+        if (context.newRecipe) {
+            mainPageModel.dataItems.push(context.newRecipe);
+            context.newRecipe = undefined;
+            mainPageModel.updateSort(0);
+            console.log("Pushed recipe")
+        }
     } catch(e) {
         console.log(e)
     }
