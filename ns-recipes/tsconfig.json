@@ -4,6 +4,8 @@
         "target": "es5",
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
+        "resolveJsonModule": true,
+        "esModuleInterop": true,
         "noEmitHelpers": true,
         "noEmitOnError": true,
         "skipLibCheck": true,

@@ -49,6 +49,17 @@
             </Repeater>
             <Label/>
 
+            <Label textDecoration="underline" horizontalAlignment="left" text="Notes" class="h2"/>
+            <Repeater items="{{ recipeData.notes }}">
+                <Repeater.itemsLayout>
+                    <StackLayout/>
+                </Repeater.itemsLayout>
+                <Repeater.itemTemplate>
+                    <Label text="{{ '&#x25CF; ' + $value }}" textWrap="true" margin="1" />
+                </Repeater.itemTemplate>
+            </Repeater>
+            <Label/>
+
         </StackLayout>
     </ScrollView>
 

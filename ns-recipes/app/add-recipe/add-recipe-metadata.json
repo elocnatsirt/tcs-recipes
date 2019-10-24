@@ -1,0 +1,41 @@
+{
+    "isReadOnly": false,
+    "commitMode": "Immediate",
+    "validationMode": "Immediate",
+    "propertyAnnotations":
+    [
+        {
+            "name": "name",
+            "displayName": "Name",
+            "index": 0
+        },
+        {
+            "name": "image",
+            "displayName": "Image",
+            "index": 1
+        },
+        {
+            "name": "source",
+            "displayName": "Source URL",
+            "index": 2
+        },
+        {
+            "name": "ingredients",
+            "displayName": "Ingredients",
+            "index": 3,
+            "editor": "MultilineText"
+        },
+        {
+            "name": "steps",
+            "displayName": "Steps",
+            "index": 4,
+            "editor": "MultilineText"
+        },
+        {
+            "name": "notes",
+            "displayName": "Notes",
+            "index": 5,
+            "editor": "MultilineText"
+        }
+    ]
+}

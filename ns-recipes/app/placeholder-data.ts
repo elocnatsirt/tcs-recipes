@@ -27,6 +27,13 @@ const recipes = [{
         "Option 1: Roast or broil the meatballs in the oven.",
         "Option 2: Cook the meatballs directly in sauce."
     ],
+    "notes": [
+        "Doubling this recipe: This recipe can be doubled for larger crowds.",
+        "Storing leftover meatballs: Store leftover meatballs, either on their own or in a sauce, in a covered container in the refrigerator for up to 5 days. Reheat over low heat in a saucepan or in the microwave.",
+        "Make-ahead meatballs: Meatballs can be shaped and kept refrigerated up to a day ahead. Arrange them in a casserole dish or on a baking sheet, but don't squish together. Cover and refrigerate for up to 1 day.",
+        "Freezing uncooked meatballs: Prepare the meatballs through Step 5. Arrange in a single layer on a baking sheet and freeze until solid. Transfer the meatballs to a freezer container or freezer bag, and freeze for up to 1 month. (Meatballs can be frozen for longer, but tend to develop freezer burn.) Thaw meatballs in the refrigerator overnight before cooking.",
+        "Freezing cooked meatballs: Let the cooked meatballs cool completely, then arrange in a single layer on baking sheet and freeze until solid. Transfer to a freezer container or bag and freeze for up to 2 months. Frozen meatballs can be thawed overnight in the refrigerator or reheated directly from the freezer. Reheat meatballs in a simmering sauce for 10 to 15 minutes or in a warm oven for 10 to 15 minutes."
+    ],
     "source": "https://www.thekitchn.com/how-to-make-meatballs-cooking-lessons-from-the-kitchn-108048"
 },
 {
@@ -42,6 +49,9 @@ const recipes = [{
         "When the oven reaches temperature, remove the skillet and place on the range over high heat for 5 minutes. Coat the steak lightly with oil and sprinkle both sides with a generous pinch of salt. Grind on black pepper.",
         "Immediately place the steak in the middle of the hot, dry skillet. Cook 30 seconds without moving. Turn with tongs and cook another 30 seconds, then put the pan straight into the oven for 2 minutes. Flip the steak and cook for another 2 minutes. (This time is for medium-rare steak. If you prefer medium, add a minute to both of the oven turns.)",
         "Remove the steak from the skillet, cover loosely with foil and rest for 2 minutes. Serve whole or slice thin and fan onto plate."
+    ],
+    "notes": [
+        "Make sure to have a properly ventilated area for cooking as this recipe will product a lot of smoke."
     ],
     "source": "https://www.foodnetwork.com/recipes/alton-brown/pan-seared-rib-eye-recipe-2131274"
 },
@@ -65,6 +75,10 @@ const recipes = [{
         "Bake for 40 minutes or until deep golden and crispy. Do not flip!",
         "Serve hot, sprinkled with parsley if desired."
     ],
+    "notes": [
+        "I've used a variety of potatoes over the years and this works great with all types, including baby potatoes. High starch potatoes will yield a fluffier inside, whereas waxy potatoes are a bit less fluffy but are sort of creamy. You'll love both! You can make these with smaller or medium potatoes. Small ones - size of a golf ball or smaller - will come out crisper (like finger food, you can pick them up), whereas larger ones have the same crispiness on the surface but you get more fluffy potato on the inside because they don't get squished as thinly. I like them both ways!",
+        "Flavourings: If you add garlic or dried herbs into the butter, it has a tendency to burn so you end up with black bits and they can be bitter. If you're really keen for garlic flavour, use the side of your knife to smash 2 cloves so they burst open. Place in small saucepan with butter and melt, then leave to infuse with garlic flavour. Discard cloves and proceed with recipe. For herbs, add a generous amount (dried or fresh) into the pot of boiling water so the potatoes get infused with herb flavour. Discard herbs and proceed with recipe."
+    ],
     "source": "https://www.recipetineats.com/crispy-smashed-potatoes/"
 },
 {
@@ -84,11 +98,15 @@ const recipes = [{
         "Combine the flour and some cayenne, salt and black pepper. Dredge each side of the pork chops in the flour mixture, and then set aside on a plate.",
         "Heat the canola oil over medium to medium-high heat. Add the butter. When the butter is melted and the butter/oil mixture is hot, cook 3 pork chops at a time, 2 to 3 minutes on the first side. Flip and cook until the chops are golden brown on the other side, 1 to 2 minutes (make sure no pink juices remain). Remove to a plate and repeat with the remaining pork chops."
     ],
+    "notes": [
+        "Delicious and simple! Serve with smashed new potatoes."
+    ],
     "source": "https://www.foodnetwork.com/recipes/ree-drummond/pan-fried-pork-chops-recipe-1989074"
 }]
 
 export function getData() {
-    // This should be done by getAllKeys() but it resolves as undefined when app is starting.
+    /* Populate recipes stored locally
+       This should be done by getAllKeys() as shown below but it resolves as undefined when app is starting. */
     if (isAndroid) {
         const sharedPreferences = getNativeApplication().getApplicationContext().getSharedPreferences("prefs.db", 0);
         const mappedPreferences = sharedPreferences.getAll();
@@ -112,8 +130,7 @@ export function getData() {
         const allValues = dictionaryUserDefaults.allValues;
         console.log(allValues);
     }
-    
-    // Populate recipes stored locally
+
     // try {
     //     let storedRecipes = appSettings.getAllKeys();
     //     console.dir(storedRecipes)

@@ -3,16 +3,13 @@ import { Page, NavigatedData } from "tns-core-modules/ui/page";
 import { Button } from "tns-core-modules/ui/button";
 import { Label } from "tns-core-modules/ui/label";
 import * as utils from "tns-core-modules/utils/utils";
-import { ObservableArray } from "tns-core-modules/data/observable-array/observable-array";
 
 // Event handler for Page "navigatedTo" event attached in details-page.xml e.g.
 export function navigatingTo(args: NavigatedData): void {
     const page: Page = <Page>args.object;
     const navigationContext = page.navigationContext;
-
     // The navigation event arguments are of type NavigatedData and provide another way to grab the passed context
     const context = args.context;
-
     page.bindingContext = navigationContext;
 }
 

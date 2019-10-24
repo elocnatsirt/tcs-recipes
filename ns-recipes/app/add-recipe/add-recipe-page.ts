@@ -34,19 +34,17 @@ export function addRecipe(args: EventData) {
 }
 
 export function saveRecipe(recipe) {
-    // console.dir(recipe);
-    // console.log(recipe.steps);
     try {
-        recipe.steps = recipe.steps.split(".");
-        recipe.ingredients = recipe.ingredients.split(".");
+        recipe.steps = recipe.steps.split(/\r?\n/);
+        recipe.ingredients = recipe.ingredients.split(/\r?\n/);
+        recipe.notes = recipe.notes.split(/\r?\n/);
     } catch(e) {
         console.log(e)
-        console.log("String to array")
+        console.log("Error splitting by newline")
         recipe.steps = [recipe.steps];
         recipe.ingredients = [recipe.ingredients];
+        recipe.notes = [recipe.notes];
     }
-    // console.log(recipe.steps);
-    // console.dir(recipe);
     if (!appSettings.hasKey(recipe.name)) {
         // console.log("Doesn't exist, saving");
         appSettings.setString(recipe.name, JSON.stringify(recipe));

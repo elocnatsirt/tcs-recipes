@@ -23,7 +23,7 @@
     </ActionBar>
 
     <StackLayout>
-        <df:RadDataForm id="myDataForm" source="{{ newRecipe }}" />
+        <df:RadDataForm id="myDataForm" source="{{ newRecipe }}" metadata="{{ newRecipeMetadata }}" />
     </StackLayout>
 
 </Page>

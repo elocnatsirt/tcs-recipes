@@ -1,0 +1,8 @@
+{
+    "name": "Mashed Potatoes",
+    "image": "~/images/potatoes.png",
+    "source": "https://google.com",
+    "ingredients": "Lots of potatoes\nSome milk\nSome butter\nSome seasoning",
+    "steps": "Peel potatoes\nWash potatoes\nCut potatoes\nCook potatoes\nEat potatoes",
+    "notes": "I prefer Russet, Yukon Golds, or a mix of potatoes.\nRemember to taste before adding too much extra butter or seasoning.\nAdd bacon and use garlic butter instead for a nice twist."
+  }
