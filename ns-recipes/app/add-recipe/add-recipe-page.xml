@@ -22,8 +22,15 @@
             ios.position="right"/>
     </ActionBar>
 
-    <StackLayout>
-        <df:RadDataForm id="myDataForm" source="{{ newRecipe }}" metadata="{{ newRecipeMetadata }}" />
-    </StackLayout>
+    <ScrollView>
+        <StackLayout>
+            <GridLayout rows="auto,auto" columns="auto,*">
+                <Button row="0" col="0" horizontalAlignment="left" text="Take Picture" tap="takePicture" class="add-button" />
+                <Button row="0" col="1" horizontalAlignment="right" text="Choose Picture" tap="choosePicture" class="add-button" />
+                <Image row="1" colSpan="2" horizontalAlignment="center" src="{{ cameraImage }}" height="250" />
+            </GridLayout>
+            <df:RadDataForm id="myDataForm" source="{{ newRecipe }}" metadata="{{ newRecipeMetadata }}" />
+        </StackLayout>
+    </ScrollView>
 
 </Page>

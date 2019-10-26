@@ -15,6 +15,7 @@
   "dependencies": {
     "nativescript-camera": "^4.5.0",
     "nativescript-drop-down": "^5.0.4",
+    "nativescript-imagepicker": "^7.1.0",
     "nativescript-theme-core": "~1.0.6",
     "nativescript-ui-dataform": "^5.1.1",
     "tns-core-modules": "~6.1.0"

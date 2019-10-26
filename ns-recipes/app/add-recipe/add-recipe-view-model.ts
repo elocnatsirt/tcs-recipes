@@ -6,7 +6,7 @@ import recipeMetadata from './add-recipe-metadata.json';
 export class AddRecipeViewModel extends Observable {
     constructor() {
         super();
-        this.set("newRecipe", JSON.parse(JSON.stringify(recipePlaceholder)))
-        this.set("newRecipeMetadata", JSON.parse(JSON.stringify(recipeMetadata)))
+        this.set("newRecipe", JSON.parse(JSON.stringify(recipePlaceholder)));
+        this.set("newRecipeMetadata", JSON.parse(JSON.stringify(recipeMetadata)));
     }
 }

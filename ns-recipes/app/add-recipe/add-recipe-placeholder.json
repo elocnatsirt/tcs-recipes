@@ -1,6 +1,5 @@
 {
     "name": "Mashed Potatoes",
-    "image": "~/images/potatoes.png",
     "source": "https://google.com",
     "ingredients": "Lots of potatoes\nSome milk\nSome butter\nSome seasoning",
     "steps": "Peel potatoes\nWash potatoes\nCut potatoes\nCook potatoes\nEat potatoes",
