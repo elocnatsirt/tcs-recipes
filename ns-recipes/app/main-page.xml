@@ -2,7 +2,8 @@
     xmlns="http://schemas.nativescript.org/tns.xsd"
     navigatingTo="navigatingTo"
     class="page"
-    xmlns:dd="nativescript-drop-down">
+    xmlns:dd="nativescript-drop-down"
+    xmlns:lv="nativescript-ui-listview">
     <ActionBar class="action-bar">
         <StackLayout orientation="horizontal"
             ios:horizontalAlignment="center"
@@ -18,14 +19,32 @@
                     selectedIndexChanged="dropDownSelectedIndexChanged"
                     row="0" col="2" itemsPadding="8" verticalAlignment="center" itemsTextAlignment="center" horizontalAlignment="right" />
 
-        <ListView id="recipeList" row="1" colSpan="3" class="list-group" items="{{ dataItems }}" separatorColor="transparent">
-            <ListView.itemTemplate>
+        <lv:RadListView id="recipeList" row="1" colSpan="3" class="list-group" items="{{ dataItems }}"
+        selectionBehavior="None" 
+        itemSwipeProgressEnded="onSwipeCellFinished"
+        itemSwipeProgressStarted="onSwipeCellStarted" 
+        itemSwipeProgressChanged="onSwipeCellProgressChanged"
+        itemSwiping="onItemSwiping" 
+        swipeActions="true">
+
+            <lv:RadListView.itemSwipeTemplate>
+                <GridLayout columns="auto, *, auto" backgroundColor="White">
+                    <StackLayout id="edit-view" col="0" style="background-color: yellow;" tap="onLeftSwipeClick" paddingLeft="16" paddingRight="16" orientation="horizontal">
+                        <Label text="Edit" style="text-size: 22" verticalAlignment="center" horizontalAlignment="center"/>
+                    </StackLayout>
+                    <StackLayout id="delete-view" col="2" style="background-color: red;" tap="onRightSwipeClick"  paddingLeft="16" paddingRight="16" orientation="horizontal">
+                        <Label text="Delete" style="text-size: 22" verticalAlignment="center" horizontalAlignment="center" />
+                    </StackLayout>
+                </GridLayout>
+            </lv:RadListView.itemSwipeTemplate>
+
+            <lv:RadListView.itemTemplate>
                 <GridLayout recipeData="{{ $value }}" tap="recipeDetail" route="recipe-detail/recipe-detail" rows="*,auto,auto" columns="5*, *" class="list-group-item">
                     <Label row="0" col="0" text="{{ name }}" class="h2" />
                     <Image horizontalAlignment="center" row="0" rowSpan="2" col="2" src="{{ image }}" />
                 </GridLayout>
-            </ListView.itemTemplate>
-        </ListView>
+            </lv:RadListView.itemTemplate>
+        </lv:RadListView>
         <ActivityIndicator row="1" colSpan="3" busy="{{ isBusy }}" class="activity-indicator" />
     </GridLayout>
 </Page>

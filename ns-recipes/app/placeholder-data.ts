@@ -114,6 +114,16 @@ export function getData() {
 
         while (iterator.hasNext()) {
             const key = iterator.next();
+            if (key == "deletedRecipes") {
+                console.log("Found deletedRecipes key");
+                let delKeys = JSON.parse(appSettings.getString("deletedRecipes"));
+                delKeys.forEach(function(element) {
+                    if (recipes.findIndex(recipe => recipe.name == element) != -1) {
+                        recipes.splice(recipes.findIndex(recipe => recipe.name == element), 1);
+                        console.log("removed " + element);
+                    }
+                })
+            }
             // console.log(key); // myString, myNumbver, isReal
             const value = mappedPreferences.get(key);
             // console.log(value); // "John Doe", 42, true
@@ -142,7 +152,16 @@ export function getData() {
     //     console.log("No stored recipes");
     //     console.log(e);
     // }
+
     return new Promise((resolve, reject) => {
+        /* Remove any undefined entries from recipes array before returning. 
+           If placeholder recipes get deleted, the array elements become undefined. Currently unsure why. 
+           Another solution might be to store placeholder recipes in appData. */ 
+        recipes.forEach(function (element) {
+            if (element.name == undefined) {
+                recipes.splice(recipes.findIndex(p => p.name == element.name), 1);
+            }
+        })
         resolve(recipes);
     });
 }

@@ -112,7 +112,7 @@ export function choosePicture(args: EventData) {
         selection.forEach(function(selected) {
             // process the selected image
             page.bindingContext.set("cameraImage", selected);
-            imageLocation = selected;
+            imageLocation = selected.get("_android");
         });
     }).catch(function (e) {
         // process error
