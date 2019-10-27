@@ -39,6 +39,14 @@ export function addRecipe(args: EventData) {
 }
 
 export function saveRecipe(recipe) {
+    // Validate fields aren't blank
+    for (var key in recipe) {
+        if (recipe[key] == "") {
+            alert(key.substring(0,1).toUpperCase() + key.substring(1) + " cannot be blank");
+            return false;
+        }
+    }
+    // Ensure recipe doesn't exist
     if (!appSettings.hasKey(recipe.name)) {
         // Split multiline text entry into arrays
         recipe.steps = recipe.steps.split(/\r?\n/);
